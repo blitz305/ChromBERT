@@ -1,0 +1,47 @@
+{
+  "task": "cistrome",
+  "profile": false,
+  "official_revision": "10589002597a9ef06613ed41b6ee83e8dd565c25",
+  "notebook": "examples/tutorials/tutorial_prompt_cistrome_imputation.ipynb",
+  "notebook_sha256": "eae762d0d1f72e0c6956898dd826eb3d0d872f6502b417a8607f8394a6309a59",
+  "input_sha256": {
+    "checkpoint/hg38_6k_1kb_pretrain.ckpt": "1d0d9165f425987268f137b336bdb3ecf19f68e3503100db197cb71fffba62e5",
+    "config/hg38_6k_1kb_region.bed": "3007901fbbdf4d2c608fc87f905007fcba8911ec4486d3f85aa7f5507f7fd192",
+    "checkpoint/hg38_6k_1kb_prompt_cistrome.ckpt": "a568aef60688760efa663909cf577b3558132e4e4f77f0363ee341cf48e6f810",
+    "demo/prompt_imputation/MAZ_K562_narrowPeak.bed": "14e9ec8b64963fc925adce9be2ecd088a81be9557bb4b2945b022fa7f2f09a6f",
+    "demo/prompt_imputation/MAZ_K562_sample250k_ids.csv": "21d654429671473bb6d8a1e32a15507178af6877fa08362713633b72582432a1",
+    "demo/prompt_imputation/MAZ_K562_sample250k_ids.json": "1bc6ae5788d4c6ddcb295b83674ad5d648a3a84dff7ef3b34e91f734ce37d6b8"
+  },
+  "expected_counts": {
+    "test": 250000
+  },
+  "output_checkpoints": [],
+  "inputs": [
+    "hg38_6k_1kb.hdf5",
+    "config/hg38_6k_1kb_region.bed",
+    "config/hg38_6k_meta.json",
+    "checkpoint/hg38_6k_1kb_pretrain.ckpt",
+    "checkpoint/hg38_6k_1kb_prompt_cistrome.ckpt",
+    "demo/prompt_imputation/MAZ_K562_narrowPeak.bed",
+    "demo/prompt_imputation/MAZ_K562_sample250k_ids.csv",
+    "demo/prompt_imputation/MAZ_K562_sample250k_ids.json"
+  ],
+  "bundled_inputs": {
+    "demo/prompt_imputation/MAZ_K562_narrowPeak.bed": "data/cistrome/MAZ_K562_narrowPeak.bed",
+    "demo/prompt_imputation/MAZ_K562_sample250k_ids.csv": "assets/hg38_1kb/demo/prompt_imputation/MAZ_K562_sample250k_ids.csv",
+    "demo/prompt_imputation/MAZ_K562_sample250k_ids.json": "assets/hg38_1kb/demo/prompt_imputation/MAZ_K562_sample250k_ids.json"
+  },
+  "split": {
+    "sample_indices": "demo/prompt_imputation/MAZ_K562_sample250k_ids.csv",
+    "expected_positives": 7439,
+    "seed": 42
+  },
+  "dataset_preset": "prompt_cistrome",
+  "dataset": {
+    "batch_size": 1,
+    "prompt_regulator": "maz",
+    "prompt_celltype": "dnase:k562"
+  },
+  "model_preset": "prompt_cistrome",
+  "model": {}
+}

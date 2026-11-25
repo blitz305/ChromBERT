@@ -156,3 +156,26 @@ cython_debug/
 # End of https://www.toptal.com/developers/gitignore/api/python,jupyternotebooks
 
 .DS_Store
+
+# Local benchmark records and runtime artifacts
+AGENTS.md
+/report/
+/reports/
+/benchmarks/reports/
+/benchmarks/archive/
+/data/
+/chrombert/assets/
+/chrombert/bundles/
+/chrombert/runs/
+/chrombert/cache
+
+# Local scripts and drafts from the previous benchmark
+/benchmarks/tasks.py
+/benchmarks/zhanglab4.sh
+/downstream_tasks.md
+/examples/tutorials/prepare_cistrome.py
+/examples/tutorials/prepare_ezh2.py
+/examples/tutorials/prepare_gep.py
+/examples/tutorials/smoke_gep.py
+/examples/tutorials/tutorial_locus_specific_TRN_ezh2_zh.ipynb
+/tutor/

@@ -1,0 +1,80 @@
+{
+  "profile": false,
+  "official_revision": "10589002597a9ef06613ed41b6ee83e8dd565c25",
+  "interpretability": false,
+  "task": "starr",
+  "notebook": "examples/tutorials/tutorial_locus_specific_TRN_starr.ipynb",
+  "notebook_sha256": "f428c0753ba6fe11d85d26cfa7c53a536c2c40f28b6658f676ec0021e207ced4",
+  "dataset_release": "721c67aecb0789c4eb204bc304f21779de7cd201",
+  "inputs": [
+    "hg38_6k_1kb.hdf5",
+    "config/hg38_6k_1kb_region.bed",
+    "config/hg38_6k_meta.json",
+    "checkpoint/hg38_6k_1kb_pretrain.ckpt",
+    "config/hg38_6k_mask_matrix.tsv",
+    "config/hg38_6k_factors_list.txt",
+    "config/hg38_6k_regulators_list.txt",
+    "demo/starr/train.csv",
+    "demo/starr/valid.csv",
+    "demo/starr/test.csv",
+    "demo/starr/supervised.csv",
+    "config/hg38ToHg19.over.chain.gz"
+  ],
+  "input_sha256": {
+    "checkpoint/hg38_6k_1kb_pretrain.ckpt": "1d0d9165f425987268f137b336bdb3ecf19f68e3503100db197cb71fffba62e5",
+    "config/hg38_6k_1kb_region.bed": "3007901fbbdf4d2c608fc87f905007fcba8911ec4486d3f85aa7f5507f7fd192",
+    "config/hg38_6k_meta.json": "aa8e917aa224e62aa2de5e5b5259b023deef17260f7e38277fc0a717bbc81ac2",
+    "config/hg38_6k_mask_matrix.tsv": "0f821595609c475270ccddfa453f49a27e050104c3ebe4b9b6d7961c222904f6",
+    "config/hg38_6k_factors_list.txt": "9c23e30117d93874b1bf1677d695e6e4cdcb30c265d5d8751aa75a912167c19a",
+    "config/hg38_6k_regulators_list.txt": "d0156e612f69abd44367e5fa6ba7cbf7a8af1b0729623e76bbeadeda5de4edc3",
+    "config/hg38ToHg19.over.chain.gz": "14a712e8e147d9fc8e9d87d51977b46f6f8ddb93efbe5d0843d86b6205f587b1",
+    "demo/starr/train.csv": "b27584b90bf5c79eecc46be8517b2e468c2f3d741dcc1337bef1885094c19ef2",
+    "demo/starr/valid.csv": "b214b56d712396744ced565a0783b547dce1f088d9873f85dab86b69a162d756",
+    "demo/starr/test.csv": "e91c894d66aba20bebd5e65c06cf16ae186d3030dd5234c2c3c78054f6467901",
+    "demo/starr/supervised.csv": "b5a3f70478cee28d2369b2f1063cbdcd9b5284b20d7405cf4659b9ab7cee4631"
+  },
+  "bundled_inputs": {
+    "demo/starr/train.csv": "cache/official-demo/demo/starr/train.csv",
+    "demo/starr/valid.csv": "cache/official-demo/demo/starr/valid.csv",
+    "demo/starr/test.csv": "cache/official-demo/demo/starr/test.csv",
+    "demo/starr/supervised.csv": "cache/official-demo/demo/starr/supervised.csv"
+  },
+  "expected_counts": {
+    "train": 26208,
+    "valid": 4082,
+    "test": 721
+  },
+  "split": {
+    "seed": 42,
+    "protocol": "paired-holdout"
+  },
+  "model_preset": "general",
+  "model": {},
+  "dataset_preset": "general",
+  "dataset": {
+    "batch_size": 8,
+    "num_workers": 20,
+    "perturbation": true,
+    "perturbation_value": 0
+  },
+  "inference_batch_size": 4,
+  "training": {
+    "seed": 42,
+    "trainable_encoder_layers": 2,
+    "pl_module": {
+      "kind": "regression",
+      "loss": "rmse",
+      "max_epochs": 2,
+      "lr": 0.0001
+    },
+    "trainer": {
+      "accumulate_grad_batches": 8,
+      "val_check_interval": 0.1,
+      "limit_val_batches": 1.0
+    }
+  },
+  "output_checkpoints": [
+    "checkpoints/tutorial-final.ckpt",
+    "checkpoints/tutorial-best-validation.ckpt"
+  ]
+}

@@ -1,0 +1,39 @@
+{
+  "task": "cistrome",
+  "profile": false,
+  "official_revision": "10589002597a9ef06613ed41b6ee83e8dd565c25",
+  "notebook": "examples/tutorials/tutorial_prompt_cistrome_imputation.ipynb",
+  "notebook_sha256": "eae762d0d1f72e0c6956898dd826eb3d0d872f6502b417a8607f8394a6309a59",
+  "input_sha256": {
+    "checkpoint/hg38_6k_1kb_pretrain.ckpt": "1d0d9165f425987268f137b336bdb3ecf19f68e3503100db197cb71fffba62e5",
+    "config/hg38_6k_1kb_region.bed": "3007901fbbdf4d2c608fc87f905007fcba8911ec4486d3f85aa7f5507f7fd192",
+    "checkpoint/hg38_6k_1kb_prompt_cistrome.ckpt": "a568aef60688760efa663909cf577b3558132e4e4f77f0363ee341cf48e6f810",
+    "demo/prompt_imputation/MAZ_K562_narrowPeak.bed": "14e9ec8b64963fc925adce9be2ecd088a81be9557bb4b2945b022fa7f2f09a6f"
+  },
+  "expected_counts": {
+    "test": 2137894
+  },
+  "output_checkpoints": [],
+  "inputs": [
+    "hg38_6k_1kb.hdf5",
+    "config/hg38_6k_1kb_region.bed",
+    "config/hg38_6k_meta.json",
+    "checkpoint/hg38_6k_1kb_pretrain.ckpt",
+    "checkpoint/hg38_6k_1kb_prompt_cistrome.ckpt",
+    "demo/prompt_imputation/MAZ_K562_narrowPeak.bed"
+  ],
+  "bundled_inputs": {
+    "demo/prompt_imputation/MAZ_K562_narrowPeak.bed": "data/cistrome/MAZ_K562_narrowPeak.bed"
+  },
+  "split": {
+    "downsample": false
+  },
+  "dataset_preset": "prompt_cistrome",
+  "dataset": {
+    "batch_size": 1,
+    "prompt_regulator": "maz",
+    "prompt_celltype": "dnase:k562"
+  },
+  "model_preset": "prompt_cistrome",
+  "model": {}
+}

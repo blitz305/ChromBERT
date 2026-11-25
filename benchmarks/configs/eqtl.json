@@ -1,0 +1,75 @@
+{
+  "profile": false,
+  "official_revision": "10589002597a9ef06613ed41b6ee83e8dd565c25",
+  "interpretability": false,
+  "task": "eqtl",
+  "notebook": "examples/tutorials/tutorial_prompt_eqtl.ipynb",
+  "notebook_sha256": "3af8a4ea9e46a7aa4d9c0f87b725a2dfd874c01aa6062df02622442045817e49",
+  "dataset_release": "721c67aecb0789c4eb204bc304f21779de7cd201",
+  "dnabert2_repo": "zhihan1996/DNABERT-2-117M",
+  "dnabert2_revision": "7bce263b15377fc15361f52cfab88f8b586abda0",
+  "inputs": [
+    "hg38_6k_1kb.hdf5",
+    "config/hg38_6k_1kb_region.bed",
+    "config/hg38_6k_meta.json",
+    "checkpoint/hg38_6k_1kb_pretrain.ckpt",
+    "config/hg38_6k_mask_matrix.tsv",
+    "demo/eqtl/lung_eqtl.tsv",
+    "other/hg38.fa",
+    "other/hg38.fa.fai",
+    "checkpoint/dnabert2-117m/bert_layers.py",
+    "checkpoint/dnabert2-117m/bert_padding.py",
+    "checkpoint/dnabert2-117m/config.json",
+    "checkpoint/dnabert2-117m/configuration_bert.py",
+    "checkpoint/dnabert2-117m/flash_attn_triton.py",
+    "checkpoint/dnabert2-117m/pytorch_model.bin",
+    "checkpoint/dnabert2-117m/tokenizer.json",
+    "checkpoint/dnabert2-117m/tokenizer_config.json"
+  ],
+  "input_sha256": {
+    "checkpoint/hg38_6k_1kb_pretrain.ckpt": "1d0d9165f425987268f137b336bdb3ecf19f68e3503100db197cb71fffba62e5",
+    "config/hg38_6k_1kb_region.bed": "3007901fbbdf4d2c608fc87f905007fcba8911ec4486d3f85aa7f5507f7fd192",
+    "config/hg38_6k_meta.json": "aa8e917aa224e62aa2de5e5b5259b023deef17260f7e38277fc0a717bbc81ac2",
+    "config/hg38_6k_mask_matrix.tsv": "0f821595609c475270ccddfa453f49a27e050104c3ebe4b9b6d7961c222904f6",
+    "checkpoint/dnabert2-117m/bert_layers.py": "317ad7e9667980ac724c07f0174ba265c8446ca5230f6b473068ff1b911edcf9",
+    "checkpoint/dnabert2-117m/bert_padding.py": "44d1c68afb1f585fdc66c150d4c60f1ed44a89c006abc57d50531d71940d7421",
+    "checkpoint/dnabert2-117m/config.json": "ba9bdafaff0cc3e30556927474d4a179519a9864012bed2628e9f1bc23c84bfd",
+    "checkpoint/dnabert2-117m/configuration_bert.py": "95fc868641b87bbcd7a32d2cd7b9f4769c27592e129daf167d14b5b8c74ec4c5",
+    "checkpoint/dnabert2-117m/flash_attn_triton.py": "568d1ac3beca0b5e1df528a1f136aa19b6489a616fcf3784f33336a50bb1de81",
+    "checkpoint/dnabert2-117m/pytorch_model.bin": "7ff39ec77a484dd01070a41bfd6e95cdd7247bec80fe357ab43a4be33687aeba",
+    "checkpoint/dnabert2-117m/tokenizer.json": "5d178e8ce2ba55df97fff197f4b30f40133b95d7096be398c2df6b526c5d8cd3",
+    "checkpoint/dnabert2-117m/tokenizer_config.json": "f9d18c81f4dd9dd7db02e9f27cc1203228147d890bfce9167c3af6465ff5b769",
+    "other/hg38.fa": "5be01555d98347fdb3714dc84c6f77c9d8bc774adcf32c6f7a8fa06f5baf5e51",
+    "demo/eqtl/lung_eqtl.tsv": "3bea9acde4699436f21c949752fb60cdb314463845bdebf92c0049653bf54ea5",
+    "other/hg38.fa.fai": "3b425de206296a5c8053023fa5ca61da43cfe78c1737c12e58c83367c7e83c21"
+  },
+  "bundled_inputs": {
+    "demo/eqtl/lung_eqtl.tsv": "cache/official-demo/demo/eqtl/lung_eqtl.tsv"
+  },
+  "expected_counts": {
+    "train": 918,
+    "valid": 312,
+    "test": 305
+  },
+  "split": {
+    "seed": 42,
+    "protocol": "stratified-region-group"
+  },
+  "model_preset": "prompt_dna",
+  "model": {},
+  "dataset_preset": "prompt_dna",
+  "dataset": {
+    "batch_size": 2,
+    "num_workers": 4
+  },
+  "training": {
+    "seed": 42,
+    "trainable_encoder_layers": 2,
+    "lr": 5e-05,
+    "accumulate_grad_batches": 4,
+    "max_epochs": 3
+  },
+  "output_checkpoints": [
+    "checkpoints/tutorial-selected.ckpt"
+  ]
+}

@@ -1,0 +1,73 @@
+{
+  "task": "gep",
+  "profile": false,
+  "interpretability": true,
+  "official_revision": "10589002597a9ef06613ed41b6ee83e8dd565c25",
+  "notebook": "examples/tutorials/tutorial_transdifferentiation_transcriptome.ipynb",
+  "notebook_sha256": "be807a85734549f6a9c983712aa7b36f1da8d135f9139607e03041eba7206b78",
+  "input_sha256": {
+    "config/hg38_6k_factors_list.txt": "9c23e30117d93874b1bf1677d695e6e4cdcb30c265d5d8751aa75a912167c19a",
+    "checkpoint/hg38_6k_1kb_pretrain.ckpt": "1d0d9165f425987268f137b336bdb3ecf19f68e3503100db197cb71fffba62e5",
+    "config/hg38_6k_1kb_region.bed": "3007901fbbdf4d2c608fc87f905007fcba8911ec4486d3f85aa7f5507f7fd192",
+    "demo/transdifferentiation/transcriptome/fibroblast_expression.csv": "1f1936c081faba1860da96065f85a321dccb9fc8e2fe9515ebf8cbf14290490b",
+    "demo/transdifferentiation/transcriptome/myoblast_expression.csv": "6fdf2b58e413a83a23331aa90c595f51f49017ebbbb0c454283954b073d65b04"
+  },
+  "expected_counts": {
+    "train": 3144,
+    "valid": 393,
+    "test": 393
+  },
+  "output_checkpoints": [
+    "checkpoints/tutorial-selected.ckpt"
+  ],
+  "inputs": [
+    "hg38_6k_1kb.hdf5",
+    "config/hg38_6k_1kb_region.bed",
+    "config/hg38_6k_meta.json",
+    "checkpoint/hg38_6k_1kb_pretrain.ckpt",
+    "config/hg38_6k_mask_matrix.tsv",
+    "config/hg38_6k_factors_list.txt",
+    "demo/transdifferentiation/transcriptome/fibroblast_expression.csv",
+    "demo/transdifferentiation/transcriptome/myoblast_expression.csv"
+  ],
+  "bundled_inputs": {
+    "config/hg38_6k_factors_list.txt": "cache/hg38_6k_factors_list.txt",
+    "demo/transdifferentiation/transcriptome/fibroblast_expression.csv": "cache/official-gep/fibroblast_expression.csv",
+    "demo/transdifferentiation/transcriptome/myoblast_expression.csv": "cache/official-gep/myoblast_expression.csv"
+  },
+  "split": {
+    "seed": 55,
+    "downsample": true,
+    "stratify_expression_change": true
+  },
+  "dataset_preset": "multi_flank_window",
+  "dataset": {
+    "flank_window": 4,
+    "batch_size": 2,
+    "num_workers": 4
+  },
+  "model_preset": "gep",
+  "model": {
+    "gep_flank_window": 4
+  },
+  "training": {
+    "seed": 55,
+    "trainable_encoder_layers": 2,
+    "pl_module": {
+      "kind": "regression",
+      "loss": "rmse",
+      "tag": "gep",
+      "max_epochs": 2,
+      "accumulate_grad_batches": 2,
+      "val_check_interval": 1.0,
+      "limit_val_batches": 1.0,
+      "checkpoint_mode": "min",
+      "checkpoint_metric": "rmse"
+    },
+    "trainer": {
+      "accumulate_grad_batches": 2,
+      "val_check_interval": 1.0,
+      "limit_val_batches": 1.0
+    }
+  }
+}
