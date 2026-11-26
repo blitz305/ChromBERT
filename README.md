@@ -124,6 +124,10 @@ Note: Currently, the `chrombert_prepare_env` command only prepares the recommend
 
 Explore detailed examples of how to fine-tune ChromBERT for downstream tasks such as prompt-enhanced fine-tuning for generative prediction, and analyses focused on locus specificities and cellular dynamics of TRNs, by visiting our examples page at [chrombert.readthedocs.io](https://chrombert.readthedocs.io/en/latest/).
 
+## Downstream benchmarks
+
+The benchmark suite covers gene expression prediction, EZH2 locus classification, Cistrome imputation, eQTL classification, and STARR-seq. See the [benchmark guide](benchmarks/README.md) for dataset scopes, task configurations, and commands for evaluation and profiling.
+
 ## Citing ChromBERT
 
 ```bibtex
